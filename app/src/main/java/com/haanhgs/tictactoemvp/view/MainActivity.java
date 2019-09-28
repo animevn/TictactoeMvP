@@ -69,14 +69,27 @@ public class MainActivity extends AppCompatActivity implements MainView{
     }
 
     @Override
-    public void showTextViewWinner(String string) {
-
+    public void setupTextViews(String string) {
+        tvWinner.setText(String.format("%s", string + " to move."));
+        tvGroup.setVisibility(View.GONE);
     }
 
     @Override
-    public void showTextViewGroup(String string) {
-
+    public void updateTextViewsWhenDraw(String state) {
+        tvWinner.setText(state);
     }
+
+    @Override
+    public void updateTextViewsWhenWin(String currentPlayer) {
+        tvWinner.setText(currentPlayer);
+        tvGroup.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void updateTextViews(String nextPlayer) {
+        tvWinner.setText(String.format("%s", nextPlayer + " to move."));
+    }
+
 
     @Override
     public void clearButtons() {
