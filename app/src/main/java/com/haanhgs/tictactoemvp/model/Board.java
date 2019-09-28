@@ -49,8 +49,7 @@ public class Board {
     }
 
     private boolean isWinningMoveByPlayer(Player player, int currentRow, int currentCol){
-        return (
-                cells[currentRow][0].getValue() == player
+        return (        cells[currentRow][0].getValue() == player
                         && cells[currentRow][1].getValue() == player
                         && cells[currentRow][2].getValue() == player
                         ||
