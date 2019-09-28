@@ -6,9 +6,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.haanhgs.tictactoemvp.R;
 import com.haanhgs.tictactoemvp.model.Board;
 import com.haanhgs.tictactoemvp.presenter.MainPresenter;
@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity implements MainView{
     MainPresenter presenter = new MainPresenter(this);
 
     private void initViews(){
-        board = new Board();
         tvWinner = findViewById(R.id.tvWinner);
         tvGroup = findViewById(R.id.tvViewGroup);
         clBoard = findViewById(R.id.clBoard);
@@ -91,5 +90,13 @@ public class MainActivity extends AppCompatActivity implements MainView{
     public void setButtonText(int row, int col, String string) {
         Button button = clBoard.findViewWithTag("" + row + col);
         if (button != null) button.setText(string);
+    }
+
+    public void onCellClicked(View view){
+        Button button = (Button) view;
+        String tag = button.getTag().toString();
+        int row = Integer.valueOf(tag.substring(0, 1));
+        int col = Integer.valueOf(tag.substring(1, 2));
+        presenter.onButtonClicked(row, col);
     }
 }
