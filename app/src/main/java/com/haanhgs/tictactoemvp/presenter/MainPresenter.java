@@ -20,23 +20,16 @@ public class MainPresenter implements Presenter{
         board = new Board();
         view.setupTextViews(board.getCurrentTurn().toString());
         view.clearButtons();
-
     }
 
     @Override
-    public void onPause() {
-
-    }
+    public void onPause() {}
 
     @Override
-    public void onResume() {
-
-    }
+    public void onResume() {}
 
     @Override
-    public void onDestroy() {
-
-    }
+    public void onDestroy() {}
 
     public void onButtonClicked(int row, int col){
         Player player = board.mark(row, col);
@@ -56,6 +49,5 @@ public class MainPresenter implements Presenter{
         board.restart();
         view.setupTextViews(board.getCurrentTurn().toString());
         view.clearButtons();
-
     }
 }

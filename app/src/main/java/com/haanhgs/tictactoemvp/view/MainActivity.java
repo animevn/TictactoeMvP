@@ -2,7 +2,6 @@ package com.haanhgs.tictactoemvp.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements MainView{
     private TextView tvWinner;
     private TextView tvGroup;
     private ConstraintLayout clBoard;
-    MainPresenter presenter = new MainPresenter(this);
+    private MainPresenter presenter = new MainPresenter(this);
 
     private void initViews(){
         tvWinner = findViewById(R.id.tvWinner);
