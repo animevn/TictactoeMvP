@@ -4,6 +4,7 @@
 
     <item
         android:id="@+id/mniReset"
+        android:icon="@drawable/reset"
         android:title="@string/mniReset"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 </menu>

@@ -1,5 +1,12 @@
 package com.haanhgs.tictactoemvp.model;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.haanhgs.tictactoemvp.model.GameState.Draw;
 import static com.haanhgs.tictactoemvp.model.GameState.Finished;
 import static com.haanhgs.tictactoemvp.model.GameState.Inprogress;
@@ -11,7 +18,9 @@ public class Board {
     private Cell[][]cells = new Cell[3][3];
     private Player winner;
     private GameState state;
-    private Player currentTurn;
+    private Player currentPlayer;
+    private List<Move> moveList;
+    private int currentMove;
 
     private void clearCells(){
         for (int i = 0; i < 3; i++){
@@ -24,14 +33,55 @@ public class Board {
     public void restart(){
         clearCells();
         winner = null;
-        currentTurn = X;
+        currentPlayer = X;
         state = Inprogress;
+        moveList = new ArrayList<>();
+        currentMove = 0;
+
     }
 
     public Board(){
         restart();
     }
 
+    ///////Save and load Save
+    public JSONObject saveGame()throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("state", state.toString());
+        if (winner == null){
+            jsonObject.put("winner", "null");
+        }else {
+            jsonObject.put("winner", winner.toString());
+        }
+        jsonObject.put("currentPlayer", currentPlayer.toString());
+        jsonObject.put("currentMove", currentMove);
+        JSONArray jsonArray = new JSONArray();
+        for (int i = 0; i < moveList.size(); i++){
+            jsonArray.put(moveList.get(i).toJson());
+        }
+        jsonObject.put("movelist", jsonArray);
+        return jsonObject;
+    }
+
+    public void loadGame(JSONObject jsonObject)throws JSONException{
+        state = GameState.valueOf(jsonObject.getString("state"));
+        String winnerString = jsonObject.getString("winner");
+        if (winnerString.equals("null")){
+            winner = null;
+        }else {
+            winner = Player.valueOf(winnerString);
+        }
+        currentPlayer = Player.valueOf(jsonObject.getString("currentPlayer"));
+        currentMove = jsonObject.getInt("currentMove");
+        JSONArray jsonArray = jsonObject.getJSONArray("movelist");
+        moveList = new ArrayList<>();
+        for (int i = 0; i < jsonArray.length(); i++){
+            moveList.add(new Move(jsonArray.getJSONObject(i)));
+        }
+    }
+
+
+    //Game algorithm
     private boolean isOutOfBounds(int idx){
         return idx < 0 || idx > 2;
     }
@@ -67,8 +117,8 @@ public class Board {
         );
     }
 
-    private void flipSide(){
-        currentTurn = currentTurn == X? O : X;
+    public void flipSide(){
+        currentPlayer = currentPlayer == X? O : X;
     }
 
     private boolean checkBoardFull(){
@@ -82,34 +132,84 @@ public class Board {
         return true;
     }
 
+    private void prepareCell(){
+        if (currentMove < moveList.size()){
+            moveList = moveList.subList(0, currentMove);
+        }
+    }
+
     public Player mark(int row, int col){
         Player playerThatMoved = null;
         if (isValid(row, col)){
-            cells[row][col] = new Cell();
-            cells[row][col].setValue(currentTurn);
-            playerThatMoved = currentTurn;
-            if (isWinningMoveByPlayer(currentTurn, row, col)){
+            prepareCell();
+            cells[row][col].setValue(currentPlayer);
+            moveList.add(new Move(currentPlayer, row, col, state));
+            currentMove++;
+            playerThatMoved = currentPlayer;
+            if (isWinningMoveByPlayer(currentPlayer, row, col)){
                 state = Finished;
-                winner = currentTurn;
-            }else {
-                flipSide();
-            }
-            if (checkBoardFull() && state == Inprogress){
+                winner = currentPlayer;
+            }else if (checkBoardFull() && state == Inprogress){
                 state = Draw;
             }
+            flipSide();
         }
         return playerThatMoved;
+    }
+
+    public void clearCell(int row, int column){
+        cells[row][column] = new Cell();
+    }
+
+    public void fillCell(Player player, int row, int column){
+        cells[row][column].setValue(player);
     }
 
     public Player getWinner() {
         return winner;
     }
 
-    public Player getCurrentTurn() {
-        return currentTurn;
+    public Player getCurrentPlayer() {
+        return currentPlayer;
     }
 
     public GameState getState() {
         return state;
+    }
+
+    public Cell[][] getCells() {
+        return cells;
+    }
+
+    public void setCells(Cell[][] cells) {
+        this.cells = cells;
+    }
+
+    public void setWinner(Player winner) {
+        this.winner = winner;
+    }
+
+    public void setState(GameState state) {
+        this.state = state;
+    }
+
+    public void setCurrentPlayer(Player currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
+
+    public List<Move> getMoveList() {
+        return moveList;
+    }
+
+    public void setMoveList(List<Move> moveList) {
+        this.moveList = moveList;
+    }
+
+    public int getCurrentMove() {
+        return currentMove;
+    }
+
+    public void setCurrentMove(int currentMove) {
+        this.currentMove = currentMove;
     }
 }

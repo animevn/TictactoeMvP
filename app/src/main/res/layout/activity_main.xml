@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,163 +9,225 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clBoard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="64dp"
         android:background="@drawable/border"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/bn01"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
+            android:id="@+id/bn1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:onClick="onCellClicked"
+            android:background="@color/AZURE"
+            android:onClick="onButtonClick"
             android:tag="00"
-            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/bn4"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@+id/bn2"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/bn02"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
+            android:id="@+id/bn2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:onClick="onCellClicked"
+            android:background="@color/AZURE"
+            android:onClick="onButtonClick"
             android:tag="01"
-            app:layout_constraintStart_toEndOf="@+id/bn01"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@+id/bn1"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@+id/bn3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/bn1" />
 
         <Button
-            android:id="@+id/bn03"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
+            android:id="@+id/bn3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:onClick="onCellClicked"
+            android:background="@color/AZURE"
+            android:onClick="onButtonClick"
             android:tag="02"
+            app:layout_constraintBottom_toBottomOf="@+id/bn2"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/bn02"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/bn2" />
+
 
         <Button
-            android:id="@+id/bn04"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
+            android:id="@+id/bn4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:onClick="onCellClicked"
+            android:background="@color/AZURE"
+            android:onClick="onButtonClick"
             android:tag="10"
+            app:layout_constraintBottom_toTopOf="@+id/bn7"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@+id/bn5"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bn01" />
-
+            app:layout_constraintTop_toBottomOf="@+id/bn1" />
 
         <Button
-            android:id="@+id/bn05"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
+            android:id="@+id/bn5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:onClick="onCellClicked"
+            android:background="@color/AZURE"
+            android:onClick="onButtonClick"
             android:tag="11"
-            app:layout_constraintStart_toEndOf="@+id/bn04"
-            app:layout_constraintTop_toBottomOf="@+id/bn02" />
+            app:layout_constraintBottom_toBottomOf="@+id/bn4"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@+id/bn6"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/bn4" />
 
         <Button
-            android:id="@+id/bn06"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
+            android:id="@+id/bn6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:onClick="onCellClicked"
+            android:background="@color/AZURE"
+            android:onClick="onButtonClick"
             android:tag="12"
+            app:layout_constraintBottom_toBottomOf="@+id/bn5"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/bn05"
-            app:layout_constraintTop_toBottomOf="@+id/bn03" />
-
-
-        <Button
-            android:id="@+id/bn07"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:onClick="onCellClicked"
-            android:tag="20"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bn04" />
-
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/bn5" />
 
         <Button
-            android:id="@+id/bn08"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
+            android:id="@+id/bn7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:onClick="onCellClicked"
-            android:tag="21"
-            app:layout_constraintStart_toEndOf="@+id/bn07"
-            app:layout_constraintTop_toBottomOf="@+id/bn05" />
-
-        <Button
-            android:id="@+id/bn09"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:onClick="onCellClicked"
-            android:tag="22"
+            android:background="@color/AZURE"
+            android:onClick="onButtonClick"
+            android:tag="20"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/bn08"
-            app:layout_constraintTop_toBottomOf="@+id/bn06" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clBoard">
-
-        <TextView
-            android:id="@+id/tvWinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="16dp"
-            android:text="@string/tvWinner"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tvViewGroup"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@+id/bn8"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/bn4" />
 
-        <TextView
-            android:id="@+id/tvViewGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <Button
+            android:id="@+id/bn8"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:background="@color/AZURE"
+            android:onClick="onButtonClick"
+            android:tag="21"
+            app:layout_constraintBottom_toBottomOf="@+id/bn7"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@+id/bn9"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/bn7" />
+
+        <Button
+            android:id="@+id/bn9"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:text="@string/tvWinnerViewGroup"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/AZURE"
+            android:onClick="onButtonClick"
+            android:tag="22"
+            app:layout_constraintBottom_toBottomOf="@+id/bn8"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/bn8" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <TextView
+        android:id="@+id/tvOutput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/placeholder"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/clBoard"
+        app:layout_constraintStart_toStartOf="@+id/clBoard"
+        app:layout_constraintTop_toBottomOf="@+id/clBoard" />
 
+    <ImageButton
+        android:id="@+id/bnFirst"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/placeholder"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="@+id/clBoard"
+        app:layout_constraintTop_toBottomOf="@+id/tvOutput"
+        app:srcCompat="@drawable/rewind" />
 
+    <ImageButton
+        android:id="@+id/bnLast"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/placeholder"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/bnFirst"
+        app:layout_constraintEnd_toEndOf="@+id/clBoard"
+        app:srcCompat="@drawable/forward" />
+
+    <ImageButton
+        android:id="@+id/bnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/placeholder"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/bnFirst"
+        app:layout_constraintEnd_toStartOf="@+id/bnLast"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bnBack"
+        app:srcCompat="@drawable/next" />
+
+    <ImageButton
+        android:id="@+id/bnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/placeholder"
+        android:scaleType="fitXY"
+        android:scaleX="-1"
+        app:layout_constraintBottom_toBottomOf="@+id/bnFirst"
+        app:layout_constraintEnd_toStartOf="@+id/bnNext"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bnFirst"
+        app:srcCompat="@drawable/next" />
 </androidx.constraintlayout.widget.ConstraintLayout>

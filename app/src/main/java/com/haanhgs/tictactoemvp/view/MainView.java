@@ -1,11 +1,7 @@
 package com.haanhgs.tictactoemvp.view;
 
 public interface MainView {
-
-    void setupTextViews(String currentPlayer);
-    void updateTextViews(String nextPlayer);
-    void updateTextViewsWhenDraw(String state);
-    void updateTextViewsWhenWin(String currentPlayer);
+    void updateTextView(String string);
     void clearButtons();
-    void setButtonText(int row, int col, String playerMark);
+    void updateButton(String string, int row, int column);
 }
