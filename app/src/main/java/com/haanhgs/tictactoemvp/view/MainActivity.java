@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import com.haanhgs.tictactoemvp.R;
-import com.haanhgs.tictactoemvp.model.Board;
 import com.haanhgs.tictactoemvp.presenter.MainPresenter;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -31,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @BindView(R.id.bnBack)
     ImageButton bnBack;
 
-    private Board board;
     private MainPresenter presenter;
 
     @Override
