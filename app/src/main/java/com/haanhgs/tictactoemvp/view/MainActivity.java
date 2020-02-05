@@ -7,11 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import com.haanhgs.tictactoemvp.R;
 import com.haanhgs.tictactoemvp.model.Board;
 import com.haanhgs.tictactoemvp.presenter.MainPresenter;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import butterknife.BindView;

@@ -24,8 +24,8 @@ import static com.haanhgs.tictactoemvp.model.GameState.Finished;
 
 public class MainPresenter implements Presenter{
 
-    private MainView view;
-    private Context context;
+    private final MainView view;
+    private final Context context;
     private Board board;
 
     public MainPresenter(MainView view, Context context){
