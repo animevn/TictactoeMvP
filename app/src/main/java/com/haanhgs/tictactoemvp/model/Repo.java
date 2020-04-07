@@ -3,17 +3,15 @@ package com.haanhgs.tictactoemvp.model;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static com.haanhgs.tictactoemvp.model.GameState.Draw;
 import static com.haanhgs.tictactoemvp.model.GameState.Finished;
-import static com.haanhgs.tictactoemvp.model.GameState.Inprogress;
+import static com.haanhgs.tictactoemvp.model.GameState.InProgress;
 import static com.haanhgs.tictactoemvp.model.Player.O;
 import static com.haanhgs.tictactoemvp.model.Player.X;
 
-public class Board {
+public class Repo {
 
     private Cell[][]cells = new Cell[3][3];
     private Player winner;
@@ -34,17 +32,20 @@ public class Board {
         clearCells();
         winner = null;
         currentPlayer = X;
-        state = Inprogress;
+        state = InProgress;
         moveList = new ArrayList<>();
         currentMove = 0;
 
     }
 
-    public Board(){
+    public Repo(){
         restart();
     }
 
-    ///////Save and load Save
+    ///////Save and load Save - parse Json and save, when load do exactly opposite
+    //////Can use serialization to save, but json is good if do stuff like client - server
+    //////Can even use Room to apply sqlite - for local storage.
+
     public JSONObject saveGame()throws JSONException {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("state", state.toString());
@@ -149,7 +150,7 @@ public class Board {
             if (isWinningMoveByPlayer(currentPlayer, row, col)){
                 state = Finished;
                 winner = currentPlayer;
-            }else if (checkBoardFull() && state == Inprogress){
+            }else if (checkBoardFull() && state == InProgress){
                 state = Draw;
             }
             flipSide();

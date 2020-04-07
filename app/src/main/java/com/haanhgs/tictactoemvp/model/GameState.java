@@ -1,5 +1,5 @@
 package com.haanhgs.tictactoemvp.model;
 
 public enum GameState {
-    Inprogress, Finished, Draw
+    InProgress, Finished, Draw
 }
