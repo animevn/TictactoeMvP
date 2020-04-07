@@ -28,13 +28,15 @@ public class MainPresenter implements Presenter{
     private final Context context;
     private Board board;
 
-    public MainPresenter(MainView view, Context context){
-        this.view = view;
+    public MainPresenter(Context context){
         this.context = context;
         board = new Board();
+        if (context instanceof MainView){
+            view = (MainView)context;
+        }else {
+            throw new ClassCastException("must implement MainView interface");
+        }
     }
-
-
 
     private void updateTextView(){
         String string = board.getCurrentPlayer().toString() + " to play";

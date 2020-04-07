@@ -3,7 +3,9 @@ package com.haanhgs.tictactoemvp.view;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Surface;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -32,13 +34,23 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     private MainPresenter presenter;
 
+    private void hideActionBarInPortratiMode(){
+        int rotation = getWindowManager().getDefaultDisplay().getRotation();
+        if (rotation == Surface.ROTATION_90 || rotation == Surface.ROTATION_270){
+            if (getSupportActionBar() != null) getSupportActionBar().hide();
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        presenter = new MainPresenter(this, this);
+        presenter = new MainPresenter(this);
         presenter.onCreate();
+        hideActionBarInPortratiMode();
     }
 
     @Override
